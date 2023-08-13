@@ -3,7 +3,15 @@ from classes.models import Class_room
 
 # Create your models here.
 class Family_type(models.Model):
-    typeName = models.CharField(max_length=50, null=False, blank=False)
+    Family_type_choice = (
+        ('Mother', 'Mother'),
+        ('Father', 'Father'),
+        ('Auncle', 'Auncle'),
+        ('Aunt', 'Aunt'),
+        ('GrandMa', 'GrandMa'),
+        ('GrandPa', 'GrandPa')
+    )
+    typeName = models.CharField(max_length=50, null=False, blank=False, choices=Family_type_choice)
 
     def __str__(self):
         return self.typeName
