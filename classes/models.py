@@ -2,7 +2,13 @@ from django.db import models
 
 # Create your models here.
 class Class_room(models.Model):
-    roomName = models.CharField(max_length=50, null=False, blank=False)
+    GreadClass_chocice = (
+        ('Gread 9','G9'),
+        ('Gread 10', 'G10'),
+        ('Gread 11', 'G11'),
+        ('Gread 12', 'G12')
+    )
+    roomName = models.CharField(max_length=50, null=False, blank=False,  choices=GreadClass_chocice)
     def __str__(self):
         return self.roomName
 class Subject(models.Model):
