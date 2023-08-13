@@ -6,7 +6,19 @@ class Class_room(models.Model):
     def __str__(self):
         return self.roomName
 class Subject(models.Model):
-    subjectName = models.CharField(max_length=50, null=False, blank=False)
+    Subject_Choice = (
+          ('Bio', 'Biology'),
+          ('Chemo', 'Chemistry'),
+          ('Math', 'Mathimatics'),
+          ('Eng', 'English'),
+          ('Pyh', 'Pyhsics'),
+          ('Civ', 'Civics'),
+          ('Eco', 'Economics'),
+          ('It', 'Information Technology'),
+          ('Dre', 'Dreawing')
+
+    )
+    subjectName = models.CharField(max_length=50, null=False, blank=False, choices=Subject_Choice)
     def __str__(self):
         return self.subjectName
 
