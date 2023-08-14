@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Class_room(models.Model):
     GreadClass_chocice = (
-        ('Gread 9','G9'),
+        ('Gread 9', 'G9'),
         ('Gread 10', 'G10'),
         ('Gread 11', 'G11'),
         ('Gread 12', 'G12')
