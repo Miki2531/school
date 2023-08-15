@@ -16,7 +16,7 @@ def user_login(request):
                     print("User role:", user.user_role)
                     return redirect(reverse('admin_dash:admin_dash'))
                 elif user.user_role == 'teacher':
-                    return redirect(reverse('teachers:teacher_dashboard'))
+                    return redirect(reverse('teacher:teacher_dashboard'))
                 elif user.user_role == 'student':
                     return redirect(reverse('student:student_dashboard'))
             else:

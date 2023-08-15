@@ -7,4 +7,4 @@ def teacher_dashboard(request):
     context = {
         'teacher': teacher,
     }
-    return render(request, 'teacher_dashboard.html', context)
+    return render(request, 'teachers/teacher_dashboard.html', context)
