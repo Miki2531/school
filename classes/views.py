@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ClassForm
 
-# Create your views here.
+# def setClassGrade(request):
+#     class = 
+

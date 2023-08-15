@@ -38,10 +38,6 @@ class Student(models.Model):
     def __str__(self):
         return self.firstName
     
-class Attendance(models.Model):
-    section = models.ForeignKey(Student, max_length= 10, null=False)
-    date = models.DateField()
-    present_status = models.CharField(max_length= 400)
 
 
 
