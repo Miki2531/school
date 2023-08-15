@@ -33,3 +33,12 @@ class Class_subject(models.Model):
     subjectId = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=False)
     def __str__(self):
         return self.classRoomId.__str__() + ' ' + self.subjectId.__str__()
+class Attendance(models.Model):
+    presense_choice = (
+        ('Present', 'present'),
+        ('Absent', 'Absent')
+    )
+    classRoomId = models.ForeignKey(Class_room, on_delete=models.SET_NULL, null=True, blank=False)
+    section = models.CharField(max_length= 10, null=False)
+    date = models.DateField()
+    present_status = models.CharField(max_length= 400, choices= presense_choice)

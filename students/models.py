@@ -37,3 +37,7 @@ class Student(models.Model):
     family_id = models.ForeignKey(Family, on_delete=models.SET_NULL, null=True)
     def __str__(self):
         return self.firstName
+    
+
+
+
