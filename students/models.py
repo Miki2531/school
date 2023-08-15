@@ -37,3 +37,11 @@ class Student(models.Model):
     family_id = models.ForeignKey(Family, on_delete=models.SET_NULL, null=True)
     def __str__(self):
         return self.firstName
+    
+class Attendance(models.Model):
+    section = models.ForeignKey(Student, max_length= 10, null=False)
+    date = models.DateField()
+    present_status = models.CharField(max_length= 500)
+
+
+
