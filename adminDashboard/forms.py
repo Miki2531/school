@@ -9,6 +9,17 @@ class CustomUserRegistrationForm(UserCreationForm):
         model = CustomUser  # Use your CustomUser model here
         fields = ['username', 'email', 'user_role']  # Add other fields as needed
 
+
+class FamilyTypeSelector(ModelForm):
+    class Meta:
+        model = Family_type
+        fields = [
+            'typeName'
+        ]
+        widgets = {
+            'typeName': forms.Select()
+        }
+
 class FamilyForm(ModelForm):
     class Meta:
         model = Family
@@ -17,7 +28,7 @@ class FamilyForm(ModelForm):
         ]
 
         widgets = {
-            'sex': forms.ChoiceField()
+            'sex': forms.Select()
         }
 class StudentForm(ModelForm):
     class Meta:
@@ -27,5 +38,5 @@ class StudentForm(ModelForm):
         ]
 
         widgets = {
-            'sex': forms.ChoiceField()
+            'sex': forms.Select()
         }
