@@ -7,4 +7,4 @@ def student_dashboard(request):
     context = {
         'student': student,
     }
-    return render(request, 'student/student_dashboard.html', context)
+    return render(request, 'students/student_dashboard.html', context)
