@@ -5,8 +5,8 @@ from students.models import Student, Family
 
 class CustomUserRegistrationForm(UserCreationForm):
     class Meta:
-        model = CustomUser  # Use your CustomUser model here
-        fields = ['username', 'email', 'user_role']  # Add other fields as needed
+        model = CustomUser
+        fields = ['username', 'email', 'user_role', ]
 
 class StudentForm(forms.ModelForm):
     class Meta:
