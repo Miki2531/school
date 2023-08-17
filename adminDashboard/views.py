@@ -9,6 +9,9 @@ from students.models import Student
 from teachers.models import Teacher
 from classes.models import Class_room, Subject
 from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm
+from employees.forms import EmployeesForm
+from employees.models import Employees
+
 from .managers import CustomUserManager
 
 @admin_required
@@ -68,3 +71,19 @@ def create_student(request):
         family_form = FamilyForm()
 
     return render(request, 'adminDashboard/create_student.html', {'student_form': student_form, 'family_form': family_form})
+
+def create_employee(request):
+    if request.method == 'POST':
+        employees_form = EmployeesForm(request.POST)
+
+        if employees_form.is_valid():
+            employee = employees_form.save()
+            employee.save()
+            return redirect('admin_dash:admin_dash')
+
+    else:
+        employees_form = EmployeesForm()
+
+    return render(request, 'adminDashboard/create_employee.html', {'employees_form': employees_form})
+
+
