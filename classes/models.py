@@ -1,8 +1,9 @@
 from django.db import models
-
+from students.models import Student
 # Create your models here.
 class Class_room(models.Model):
     GreadClass_chocice = (
+        ('Gread 8', 'G8'),
         ('Gread 9', 'G9'),
         ('Gread 10', 'G10'),
         ('Gread 11', 'G11'),
@@ -33,12 +34,7 @@ class Class_subject(models.Model):
     subjectId = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=False)
     def __str__(self):
         return self.classRoomId.__str__() + ' ' + self.subjectId.__str__()
-class Attendance(models.Model):
-    presense_choice = (
-        ('Present', 'present'),
-        ('Absent', 'Absent')
-    )
+
+class Class_student(models.Model):
     classRoomId = models.ForeignKey(Class_room, on_delete=models.SET_NULL, null=True, blank=False)
-    section = models.CharField(max_length= 10, null=False)
-    date = models.DateField()
-    present_status = models.CharField(max_length= 400, choices= presense_choice)
+    studentID = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True, blank=False)
