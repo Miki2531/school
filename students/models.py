@@ -1,5 +1,4 @@
 from django.db import models
-from classes.models import Class_room
 
 # Create your models here.
 class Family(models.Model):
@@ -28,7 +27,6 @@ class Student(models.Model):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
     register_date = models.DateField(auto_now_add=True)
-    class_room_id = models.ForeignKey(Class_room, on_delete=models.SET_NULL, null=True)
     Family_type_choice = (
         ('Mother', 'Mother'),
         ('Father', 'Father'),
