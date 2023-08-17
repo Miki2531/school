@@ -10,13 +10,14 @@ from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm, SchoolYe
 from .models import SchoolYear
 from employees.forms import EmployeesForm
 from employees.models import Employees
+@admin_required
 def school_year(request):
 
     if request.method == 'POST':
         year_form = SchoolYearForm(request.POST)
         if year_form.is_valid():
             year_form.save()
-            return redirect('admin_dash:admin')
+            return redirect('admin_dash:admin_dash')
     year_form = SchoolYearForm()
     return render(request, 'adminDashboard/SchoolYear.html', {'yearForm', year_form})
 @admin_required
