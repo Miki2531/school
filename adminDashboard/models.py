@@ -1,5 +1,5 @@
 from django.db import models
-
+from classes.models import Class_student
 # Create your models here.
 
 class SchoolYear(models.Model):
@@ -10,3 +10,10 @@ class SchoolYear(models.Model):
 
     class Meta:
         verbose_name_plural = "School Years"
+class School_Year_Class(models.Model):
+    schoolYear = models.ForeignKey(SchoolYear, on_delete=models.SET_NULL, null=True, blank=False)
+    student_in_class = models.ForeignKey(Class_student, on_delete=models.SET_NULL, null=True, blank=False)
+    free = models.IntegerField()
+
+
+
