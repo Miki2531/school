@@ -4,31 +4,38 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from accounts.decorators import admin_required
-from accounts.models import CustomUser
-from students.models import Student
 from teachers.models import Teacher
-from classes.models import Class_room, Subject
-from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm
+from classes.models import Class_room, Subject, Student
+from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm, SchoolYearForm,SchoolYearClassForm
+from .models import SchoolYear
 from employees.forms import EmployeesForm
 from employees.models import Employees
+def school_year(request):
 
-from .managers import CustomUserManager
-
+    if request.method == 'POST':
+        year_form = SchoolYearForm(request.POST)
+        if year_form.is_valid():
+            year_form.save()
+            return redirect('admin_dash:admin')
+    year_form = SchoolYearForm()
+    return render(request, 'adminDashboard/SchoolYear.html', {'yearForm', year_form})
 @admin_required
 def admin_dash(request):
     students = Student.objects.all()
     teachers = Teacher.objects.all()
     classes = Class_room.objects.all()
     subjects = Subject.objects.all()
+    if SchoolYear.objects.all() == 0:
+        return redirect('admin_dash:school_year')
+    else:
+        context = {
+            'students': students,
+            'teachers': teachers,
+            'classes': classes,
+            'subjects': subjects,
+        }
 
-    context = {
-        'students': students,
-        'teachers': teachers,
-        'classes': classes,
-        'subjects': subjects,
-    }
-
-    return render(request, 'adminDashboard/test.html', context)
+        return render(request, 'adminDashboard/test.html', context)
 @admin_required
 def register_user(request):
     if request.method == 'POST':
