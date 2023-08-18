@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from accounts.decorators import admin_required
@@ -10,9 +7,14 @@ from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm, SchoolYe
 from .models import SchoolYear
 from employees.forms import EmployeesForm
 from employees.models import Employees
+from accounts.models import CustomUser
+from students.models import Student
+from teachers.models import Teacher, Teacher_subject, ReferenceBook, Grade
+from .managers import CustomUserManager
+
+
 @admin_required
 def school_year(request):
-
     if request.method == 'POST':
         year_form = SchoolYearForm(request.POST)
         if year_form.is_valid():
@@ -94,4 +96,9 @@ def create_employee(request):
 
     return render(request, 'adminDashboard/create_employee.html', {'employees_form': employees_form})
 
+
+
+
+
+            
 

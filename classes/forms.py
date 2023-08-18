@@ -13,7 +13,7 @@ class ClassForm(ModelForm):
         ]
 
         widgets = {
-            'roomName': forms.ChoiceField()
+            'roomName': forms.Select()
         }
 
 class subjectFrom(ModelForm):
@@ -24,7 +24,7 @@ class subjectFrom(ModelForm):
         ]
 
         widgets = {
-            'subjectName': forms.ChoiceField()
+            'subjectName': forms.Select()
         }
 
 class classSubjectForm(ModelForm):

@@ -24,4 +24,4 @@ class Employees(models.Model):
     )
     title = models.CharField(max_length=50, null=False, blank=False, choices=Job_Type)
     def __str__(self):
-        return self.firstName
+        return self.title

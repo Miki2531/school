@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Grade</title>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="grade"
+        value="{{ grade.grade }}"
+        placeholder="Enter Updated Grade"
+      />
+      <button type="submit">Update Grade</button>
+    </form>
+  </body>
+</html>

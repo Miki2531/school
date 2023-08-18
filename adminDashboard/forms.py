@@ -1,7 +1,10 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from accounts.models import CustomUser  # Import your CustomUser model if it exists
 from students.models import Student, Family
+from classes.models import Attendance
+
 from .models import School_Year_Class, SchoolYear
 
 class CustomUserRegistrationForm(UserCreationForm):
@@ -25,3 +28,6 @@ class FamilyForm(forms.ModelForm):
     class Meta:
         model = Family
         fields = '__all__'
+
+
+   

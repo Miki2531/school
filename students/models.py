@@ -1,27 +1,26 @@
 from django.db import models
 
 # Create your models here.
+gender_choices =( 
+        ('M', 'Male'),
+        ('F', 'Female')
+    
+)
 class Family(models.Model):
     first_name_f     = models.CharField(max_length=50, null=False, blank=False)
     last_name_f    = models.CharField(max_length=50, null=False, blank=False)
     email_f         = models.EmailField(max_length=100, null=False, blank=False)
     phone_f = models.CharField(max_length=15, blank=False, null=False)
-    gender_choices = [
-        ('M', 'Male'),
-        ('F', 'Female')
-    ]
     gender_f = models.CharField(max_length=1, choices=gender_choices)
     address_f = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.first_name_f
+    
+
 class Student(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
-    gender_choices = [
-        ('M', 'Male'),
-        ('F', 'Female')
-    ]
     gender = models.CharField(max_length=1, choices=gender_choices)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)

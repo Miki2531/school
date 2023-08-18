@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teacher Sections</title>
+  </head>
+  <body>
+    <h1>Your Assigned Sections</h1>
+    <ul>
+      {% for section in teacher_sections %}
+      <li>{{ section.classRoomId }} - {{ section.subjectId }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
