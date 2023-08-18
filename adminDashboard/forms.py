@@ -3,9 +3,8 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from accounts.models import CustomUser  # Import your CustomUser model if it exists
 from students.models import Student, Family
-from classes.models import Attendance
 
-from .models import School_Year_Class, SchoolYear
+from .models import School_Year_Class, School_Year
 
 class CustomUserRegistrationForm(UserCreationForm):
     class Meta:
@@ -22,7 +21,7 @@ class SchoolYearClassForm(forms.ModelForm):
         fields = '__all__'
 class SchoolYearForm(forms.ModelForm):
     class Meta:
-        model = SchoolYear
+        model = School_Year
         fields = '__all__'
 class FamilyForm(forms.ModelForm):
     class Meta:
