@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post Reference Book</title>
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" name="title" placeholder="Title" />
+      <select name="uploaded_by">
+        {% for teacher in teachers %}
+        <option value="{{ teacher.id }}">{{ teacher.employees_id }}</option>
+        {% endfor %}
+      </select>
+      <input type="file" name="file" />
+      <button type="submit">Upload Book</button>
+    </form>
+  </body>
+</html>
