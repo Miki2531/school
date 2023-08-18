@@ -3,7 +3,7 @@ from accounts.decorators import teacher_required
 from accounts.models import CustomUser
 from students.models import Student
 from teachers.models import Teacher, Teacher_subject, ReferenceBook, Grade
-from classes.models import Class_room, Subject, Attendance
+from classes.models import Class_room, Subject
 from .forms import GradeUpdateForm, RefrenceBookForm
 
 import os
@@ -101,8 +101,6 @@ def mark_attendance(request):
 
         for student_id, present_status in zip(request.POST.getlist('student_id'), present_status_list):
             student = Student.objects.get(id=student_id)
-            attendance = Attendance(classRoomId=class_room, section=section, date=date, present_status=present_status )
-            attendance.save()
 
             return redirect('teacher_dashboard')
     class_room = Class_room.objects.all()
