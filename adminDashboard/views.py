@@ -1,10 +1,13 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from accounts.decorators import admin_required
 from teachers.models import Teacher
-from classes.models import Class_room, Subject, Student
+from classes.models import Class_room, Subject
 from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm, SchoolYearForm,SchoolYearClassForm
-from .models import SchoolYear
+from .models import School_Year
 from employees.forms import EmployeesForm
 from employees.models import Employees
 from accounts.models import CustomUser
@@ -15,20 +18,23 @@ from .managers import CustomUserManager
 
 @admin_required
 def school_year(request):
+
     if request.method == 'POST':
-        year_form = SchoolYearForm(request.POST)
-        if year_form.is_valid():
-            year_form.save()
+        form = SchoolYearForm(request.POST)
+        if form.is_valid():
+            form.save()
             return redirect('admin_dash:admin_dash')
-    year_form = SchoolYearForm()
-    return render(request, 'adminDashboard/SchoolYear.html', {'yearForm', year_form})
+    else:
+        form = SchoolYearForm()
+    return render(request, 'adminDashboard/SchoolYear.html', {'yearForm': form})
+
 @admin_required
 def admin_dash(request):
     students = Student.objects.all()
     teachers = Teacher.objects.all()
     classes = Class_room.objects.all()
     subjects = Subject.objects.all()
-    if SchoolYear.objects.all() == 0:
+    if School_Year.objects.all() == 0:
         return redirect('admin_dash:school_year')
     else:
         context = {
@@ -96,9 +102,4 @@ def create_employee(request):
 
     return render(request, 'adminDashboard/create_employee.html', {'employees_form': employees_form})
 
-
-
-
-
-            
 
