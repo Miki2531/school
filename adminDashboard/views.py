@@ -7,18 +7,14 @@ from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm, SchoolYe
 from .models import SchoolYear
 from employees.forms import EmployeesForm
 from employees.models import Employees
-@admin_required
-def school_year(request):
-from django.contrib.auth.decorators import login_required
 from accounts.models import CustomUser
 from students.models import Student
 from teachers.models import Teacher, Teacher_subject, ReferenceBook, Grade
-from classes.models import Class_room, Subject, Attendance
-from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm
 from .managers import CustomUserManager
 
 
-
+@admin_required
+def school_year(request):
     if request.method == 'POST':
         year_form = SchoolYearForm(request.POST)
         if year_form.is_valid():
