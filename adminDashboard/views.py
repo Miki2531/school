@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from accounts.decorators import admin_required
+from django.contrib.auth.decorators import login_required
 from accounts.models import CustomUser
 from students.models import Student
-from teachers.models import Teacher
-from classes.models import Class_room, Subject
+from teachers.models import Teacher, Teacher_subject, ReferenceBook, Grade
+from classes.models import Class_room, Subject, Attendance
 from .forms import CustomUserRegistrationForm, StudentForm, FamilyForm
 from .managers import CustomUserManager
+
+
 
 @admin_required
 def admin_dash(request):
@@ -65,4 +68,8 @@ def create_student(request):
         family_form = FamilyForm()
 
     return render(request, 'adminDashboard/create_student.html', {'student_form': student_form, 'family_form': family_form})
+
+
+
+            
 
