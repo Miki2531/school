@@ -23,7 +23,7 @@ class Employees(models.Model):
     email = models.EmailField(max_length=100, null=False, blank=False)
     phone = models.IntegerField(null=False, blank=False)
     address = models.CharField(max_length=50, null=False, blank=False)
-    sex = models.CharField(max_length=1, null=False, blank=False)
+    sex = models.CharField(max_length=10, null=False, blank=False)
     registrationDate = models.DateField(auto_now_add= True)
     Job_id = models.ForeignKey(Job, on_delete= models.SET_NULL, null=True)
 

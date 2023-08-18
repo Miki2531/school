@@ -27,7 +27,7 @@ class Family(models.Model):
     lastName      = models.CharField(max_length=50, null=False, blank=False)
     email         = models.EmailField(max_length=100, null=False, blank=False)
     phone         = models.IntegerField(null=False, blank=False)
-    sex           = models.CharField(max_length=1, null=False, blank=False, choices=sex_choice)
+    sex           = models.CharField(max_length=10, null=False, blank=False, choices=sex_choice)
     family_type_id= models.ForeignKey(Family_type, on_delete= models.SET_NULL,null=True)
     def __str__(self):
         return self.firstName
@@ -38,7 +38,7 @@ class Student(models.Model):
     email      = models.EmailField(max_length= 100, null = False, blank= False)
     phone      = models.IntegerField(null=False, blank=False)
     age        = models.IntegerField(null = False, blank= False)
-    sex        = models.CharField(max_length=1, null = False, blank= False, choices=sex_choice)
+    sex        = models.CharField(max_length=10, null = False, blank= False, choices=sex_choice)
     class_room_id = models.ForeignKey(Class_room, on_delete=models.SET_NULL, null=True)
     family_id = models.ForeignKey(Family, on_delete=models.SET_NULL, null=True)
     def __str__(self):
