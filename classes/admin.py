@@ -5,4 +5,5 @@ admin.site.register(Class_room)
 admin.site.register(Class_subject)
 admin.site.register(Subject)
 admin.site.register(Attendance)
+admin.site.register(Class_student)
 

@@ -5,7 +5,7 @@ from students.models import Student
 # Create your models here.
 
 class Teacher(models.Model):
-    employees_id = models.ForeignKey(Employees, on_delete= models.CASCADE, null=True)
+    employees_id = models.ForeignKey(Employees, on_delete= models.CASCADE, null=True, blank=True)
     def __str__(self):
         return self.employees_id.__str__()
 class Teacher_subject(models.Model):

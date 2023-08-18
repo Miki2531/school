@@ -11,9 +11,7 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                print("User role:", user.user_role)
                 if user.user_role == 'admin':
-                    print("User role:", user.user_role)
                     return redirect(reverse('admin_dash:admin_dash'))
                 elif user.user_role == 'teacher':
                     return redirect(reverse('teacher:teacher_dashboard'))

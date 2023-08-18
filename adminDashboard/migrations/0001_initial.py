@@ -10,23 +10,26 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('classes', '0001_initial'),
-        ('employees', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Teacher',
+            name='SchoolYear',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('employees_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='employees.employees')),
+                ('year_name', models.CharField(help_text='Format: YYYY-YYYY (e.g., 2023-2024)', max_length=9, unique=True)),
             ],
+            options={
+                'verbose_name_plural': 'School Years',
+            },
         ),
         migrations.CreateModel(
-            name='Teacher_subject',
+            name='School_Year_Class',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subjectId', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='classes.subject')),
-                ('teacherId', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='teachers.teacher')),
+                ('free', models.IntegerField()),
+                ('schoolYear', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='adminDashboard.schoolyear')),
+                ('student_in_class', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='classes.class_student')),
             ],
         ),
     ]

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Year</title>
+</head>
+<body>
+    <h2>School Year</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ year_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

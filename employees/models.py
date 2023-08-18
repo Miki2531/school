@@ -1,7 +1,16 @@
 from django.db import models
-
-# Create your models here.
-class Job(models.Model):
+class Employees(models.Model):
+    firstName = models.CharField(max_length=50, null=False, blank=False)
+    lastName = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=100, null=False, blank=False)
+    phone = models.IntegerField(null=False, blank=False)
+    address = models.CharField(max_length=50, null=False, blank=False)
+    gender_choices = [
+        ('M', 'Male'),
+        ('F', 'Female')
+    ]
+    gender = models.CharField(max_length=10, choices=gender_choices)
+    registrationDate = models.DateField(auto_now_add= True)
     Job_Type = (
         ('Director', 'Director'),
         ('Vice Director', 'Vice Director'),

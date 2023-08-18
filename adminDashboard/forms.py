@@ -5,6 +5,7 @@ from accounts.models import CustomUser  # Import your CustomUser model if it exi
 from students.models import Student, Family
 from classes.models import Attendance
 
+from .models import School_Year_Class, SchoolYear
 
 class CustomUserRegistrationForm(UserCreationForm):
     class Meta:
@@ -15,7 +16,14 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = '__all__'
-
+class SchoolYearClassForm(forms.ModelForm):
+    class Meta:
+        model = School_Year_Class
+        fields = '__all__'
+class SchoolYearForm(forms.ModelForm):
+    class Meta:
+        model = SchoolYear
+        fields = '__all__'
 class FamilyForm(forms.ModelForm):
     class Meta:
         model = Family
