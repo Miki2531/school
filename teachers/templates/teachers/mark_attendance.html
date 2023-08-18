@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mark Attendance</title>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <select name="class_room_id">
+        {% for class_room in class_rooms %}
+        <option value="{{ class_room.id }}">{{ class_room.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="text" name="section" placeholder="Section" />
+      <input type="date" name="date" />
+      {% for student in students %}
+      <label>
+        <input type="checkbox" name="present_status" value="Present" checked />
+        {{ student.student_name }} - Present
+        <input
+          type="hidden"
+          name="student_id"
+          value="{{ student.id }}"
+        /> </label
+      ><br />
+      {% endfor %}
+      <button type="submit">Submit Attendance</button>
+    </form>
+  </body>
+</html>
