@@ -44,7 +44,7 @@ def admin_dash(request):
             'subjects': subjects,
         }
 
-        return render(request, 'adminDashboard/test.html', context)
+        return render(request, 'adminDashboard/base.html', context)
 @admin_required
 def register_user(request):
     if request.method == 'POST':
