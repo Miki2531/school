@@ -103,3 +103,28 @@ def create_employee(request):
     return render(request, 'adminDashboard/create_employee.html', {'employees_form': employees_form})
 
 
+@admin_required
+def update_student(request, pk):
+    student = Student.objects.get(id=pk);
+    form = StudentForm(instance=student) # previous
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST or None , instance=student )
+        if form.is_valid():
+            form.save();
+        return redirect('/admin-dashboard/')
+    context={'form': form}
+    return render (request,'adminDashboard/updateStudent.html',context );
+
+@admin_required
+def delete_student(request, pk):
+    student = student.object.get(id=pk);
+    
+    if request.method == 'POST':
+        student.delete()
+        return redirect('/')
+    context = {'student': student}
+    return render(request, 'adminDashboard/delete_student.html', context)
+
+
+            
